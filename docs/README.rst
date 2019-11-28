@@ -1,14 +1,14 @@
 .. _readme:
 
-template__-formula
+firefox-formula
 ================
 
 |img_travis| |img_sr|
 
-.. |img_travis| image:: https://travis-ci.com/saltstack-formulas/template__-formula.svg?branch=master
+.. |img_travis| image:: https://travis-ci.com/saltstack-formulas/firefox-formula.svg?branch=master
    :alt: Travis CI Build Status
    :scale: 100%
-   :target: https://travis-ci.com/saltstack-formulas/template__-formula
+   :target: https://travis-ci.com/saltstack-formulas/firefox-formula
 .. |img_sr| image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
    :alt: Semantic Release
    :scale: 100%
@@ -53,79 +53,79 @@ Available states
 .. contents::
    :local:
 
-``template__``
+``firefox``
 ^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
-This installs the template__ package,
-manages the template__ configuration file and then
-starts the associated template__ service.
+This installs the firefox package,
+manages the firefox configuration file and then
+starts the associated firefox service.
 
-``template__.package``
+``firefox.package``
 ^^^^^^^^^^^^^^^^^^^^
 
-This state will install the template__ package only.
+This state will install the firefox package only.
 
-``template__.config``
+``firefox.config``
 ^^^^^^^^^^^^^^^^^^^
 
-This state will configure the template__ service and has a dependency on ``template__.install``
+This state will configure the firefox service and has a dependency on ``firefox.install``
 via include list.
 
-``template__.service``
+``firefox.service``
 ^^^^^^^^^^^^^^^^^^^^
 
-This state will start the template__ service and has a dependency on ``template__.config``
+This state will start the firefox service and has a dependency on ``firefox.config``
 via include list.
 
-``template__.clean``
+``firefox.clean``
 ^^^^^^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
-this state will undo everything performed in the ``template__`` meta-state in reverse order, i.e.
+this state will undo everything performed in the ``firefox`` meta-state in reverse order, i.e.
 stops the service,
 removes the configuration file and
 then uninstalls the package.
 
-``template__.service.clean``
+``firefox.service.clean``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This state will stop the template__ service and disable it at boot time.
+This state will stop the firefox service and disable it at boot time.
 
-``template__.config.clean``
+``firefox.config.clean``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This state will remove the configuration of the template__ service and has a
-dependency on ``template__.service.clean`` via include list.
+This state will remove the configuration of the firefox service and has a
+dependency on ``firefox.service.clean`` via include list.
 
-``template__.package.clean``
+``firefox.package.clean``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This state will remove the template__ package and has a depency on
-``template__.config.clean`` via include list.
+This state will remove the firefox package and has a depency on
+``firefox.config.clean`` via include list.
 
-``template__.subcomponent``
+``firefox.subcomponent``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
 This state installs a subcomponent configuration file before
-configuring and starting the template__ service.
+configuring and starting the firefox service.
 
-``template__.subcomponent.config``
+``firefox.subcomponent.config``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This state will configure the template__ subcomponent and has a
-dependency on ``template__.config`` via include list.
+This state will configure the firefox subcomponent and has a
+dependency on ``firefox.config`` via include list.
 
-``template__.subcomponent.config.clean``
+``firefox.subcomponent.config.clean``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This state will remove the configuration of the template__ subcomponent
-and reload the template__ service by a dependency on
-``template__.service.running`` via include list and ``watch_in``
+This state will remove the configuration of the firefox subcomponent
+and reload the firefox service by a dependency on
+``firefox.service.running`` via include list and ``watch_in``
 requisite.
 
 Testing
@@ -151,7 +151,7 @@ e.g. ``debian-9-2019-2-py3``.
 ``bin/kitchen converge``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Creates the docker instance and runs the ``template__`` main state, ready for testing.
+Creates the docker instance and runs the ``firefox`` main state, ready for testing.
 
 ``bin/kitchen verify``
 ^^^^^^^^^^^^^^^^^^^^^^

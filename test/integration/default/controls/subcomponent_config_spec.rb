@@ -3,7 +3,7 @@
 control 'template subcomponent configuration' do
   title 'should match desired lines'
 
-  describe file('/etc/template__-subcomponent-formula.conf') do
+  describe file('/etc/firefox-subcomponent-formula.conf') do
     it { should be_file }
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
@@ -11,7 +11,7 @@ control 'template subcomponent configuration' do
     its('content') do
       should include(
         '# File managed by Salt at '\
-        '<salt://template__/subcomponent/config/files/default/'\
+        '<salt://firefox/subcomponent/config/files/default/'\
         'subcomponent-example.tmpl.jinja>.'
       )
     end

@@ -24,8 +24,8 @@ control 'template configuration' do
       should include(
         '"tofs": {"files_switch": ["any/path/can/be/used/here", "id", '\
         '"roles", "osfinger", "os", "os_family"], "source_files": '\
-        '{"template__-config-file-file-managed": ["example.tmpl.jinja"], '\
-        '"template__-subcomponent-config-file-file-managed": '\
+        '{"firefox-config-file-file-managed": ["example.tmpl.jinja"], '\
+        '"firefox-subcomponent-config-file-file-managed": '\
         '["subcomponent-example.tmpl.jinja"]}'
       )
     end

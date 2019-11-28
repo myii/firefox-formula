@@ -13,15 +13,15 @@
 # os_family: Debian
 Ubuntu:
   pkg:
-    name: template__-ubuntu
-  config: /etc/template__.d/custom-ubuntu.conf
+    name: firefox-ubuntu
+  config: /etc/firefox.d/custom-ubuntu.conf
 
 Raspbian: {}
 
 # os_family: RedHat
 Fedora:
   pkg:
-    name: template__-fedora
+    name: firefox-fedora
   service:
     name: service-fedora
 

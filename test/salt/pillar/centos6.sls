@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-template__:
+firefox:
   lookup:
     master: template-master
     # Just for testing purposes
@@ -45,9 +45,9 @@ template__:
 
     # For testing purposes
     source_files:
-      template__-config-file-file-managed:
+      firefox-config-file-file-managed:
         - 'example.tmpl.jinja'
-      template__-subcomponent-config-file-file-managed:
+      firefox-subcomponent-config-file-file-managed:
         - 'subcomponent-example.tmpl.jinja'
 
   # Just for testing purposes

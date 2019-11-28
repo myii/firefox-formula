@@ -12,11 +12,11 @@
 ---
 # os: Ubuntu
 Ubuntu-18.04:
-  config: /etc/template__.d/custom-ubuntu-18.04.conf
+  config: /etc/firefox.d/custom-ubuntu-18.04.conf
 
 # os: CentOS
 CentOS-6:
   pkg:
-    name: template__-centos-6
-  config: /etc/template__.d/custom-centos-6.conf
+    name: firefox-centos-6
+  config: /etc/firefox.d/custom-centos-6.conf
 CentOS-7: {}

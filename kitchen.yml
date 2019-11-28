@@ -162,7 +162,7 @@ provisioner:
   log_level: debug
   salt_install: none
   require_chef: false
-  formula: template__
+  formula: firefox
   salt_copy_filter:
     - .kitchen
     - .git
@@ -183,15 +183,15 @@ suites:
       state_top:
         base:
           '*':
-            - template__
+            - firefox
       pillars:
         top.sls:
           base:
             '*':
-              - template__
+              - firefox
               - define_roles
       pillars_from_files:
-        template__.sls: pillar.example
+        firefox.sls: pillar.example
         define_roles.sls: test/salt/pillar/define_roles.sls
     verifier:
       inspec_tests:
@@ -203,15 +203,15 @@ suites:
       state_top:
         base:
           '*':
-            - template__
+            - firefox
       pillars:
         top.sls:
           base:
             '*':
-              - template__
+              - firefox
               - define_roles
       pillars_from_files:
-        template__.sls: test/salt/pillar/centos6.sls
+        firefox.sls: test/salt/pillar/centos6.sls
         define_roles.sls: test/salt/pillar/define_roles.sls
     verifier:
       inspec_tests:

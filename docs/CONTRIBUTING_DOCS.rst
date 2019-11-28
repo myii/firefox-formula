@@ -8,7 +8,7 @@ Contributing documentation
 .. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
    :alt: Documentation Status
    :scale: 100%
-   :target: https://template__-formula.readthedocs.io/en/latest/?badge=latest
+   :target: https://firefox-formula.readthedocs.io/en/latest/?badge=latest
 
 Toolchain
 ^^^^^^^^^

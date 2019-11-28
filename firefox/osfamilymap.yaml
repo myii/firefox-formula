@@ -12,23 +12,23 @@
 ---
 Debian:
   pkg:
-    name: template__-debian
-  config: /etc/template__.d/custom.conf
+    name: firefox-debian
+  config: /etc/firefox.d/custom.conf
 
 RedHat:
   pkg:
-    name: template__-redhat
-  config: /etc/template__.conf
+    name: firefox-redhat
+  config: /etc/firefox.conf
 
 Suse:
   pkg:
-    name: template__-suse
+    name: firefox-suse
 
 Gentoo: {}
 
 Arch:
   pkg:
-    name: template__-arch
+    name: firefox-arch
   service:
     name: service-arch
 

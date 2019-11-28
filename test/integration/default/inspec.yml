@@ -2,10 +2,10 @@
 # vim: ft=yaml
 ---
 name: default
-title: template__ formula
+title: firefox formula
 maintainer: SaltStack Formulas
 license: Apache-2.0
-summary: Verify that the template__ formula is setup and configured correctly
+summary: Verify that the firefox formula is setup and configured correctly
 supports:
   - platform-name: debian
   - platform-name: ubuntu
