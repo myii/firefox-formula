@@ -3,7 +3,7 @@
 ---
 firefox:
   pkg:
-    name: firefox
+    name: firefox_x64
   rootgroup: root
   config: '/etc/firefox'
   service:
