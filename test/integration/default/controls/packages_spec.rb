@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 # Overide by OS
-package_name = 'bash'
-package_name = 'cronie' if (os[:name] == 'centos') && os[:release].start_with?('6')
+package_name = 'Mozilla Firefox'
 
-control 'template package' do
+control 'firefox package' do
   title 'should be installed'
 
   describe package(package_name) do
