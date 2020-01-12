@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`1.1.0 <https://github.com/dafyddj/firefox-formula/compare/v1.0.0...v1.1.0>`_ (2020-01-12)
+----------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **package:** install Mozilla Firefox for Windows 64-bit (\ `3b60ab1 <https://github.com/dafyddj/firefox-formula/commit/3b60ab171e84398f31cf9cb6031e171ebe49d217>`_\ )
+
 1.0.0 (2019-11-28)
 ------------------
 
