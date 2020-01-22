@@ -195,3 +195,4 @@ suites:
       controls:
         - firefox package
         - firefox-gpo-install
+        - firefox-gpo-config
