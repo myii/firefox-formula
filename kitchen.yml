@@ -194,3 +194,4 @@ suites:
         - path: test/integration/default
       controls:
         - firefox package
+        - firefox-gpo-install

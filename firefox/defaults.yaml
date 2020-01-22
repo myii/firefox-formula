@@ -4,12 +4,23 @@
 firefox:
   pkg:
     name: firefox_x64
-  rootgroup: root
-  config: '/etc/firefox'
-  service:
-    name: firefox
-  subcomponent:
-    config: '/etc/firefox-subcomponent-formula.conf'
-  # Just here for testing
-  added_in_defaults: defaults_value
-  winner: defaults
+  gpo:
+    file_owner: Administrators
+    lang: en-US
+    policy_dir: C:\Windows\PolicyDefinitions
+    policy_hash:
+      '1.12':
+        firefox:
+          adml: a6eaddc66b34106ec726d8113d1ae897ef6a4590ec5289af04ce17d88d63d1b6
+          admx: 889c0de811984dc04602a443f1f2534e4b894020a4bdd8df180897cd37e01f67
+        mozilla:
+          adml: cd802549112e61044ba648d05db8b0edc446a3458d18333748b83c0fa49c9894
+          admx: 63872a03337f0268085c43c45f1ef05cd2ce68e36bb54c63f0cd128985c76bb0
+      '1.11':
+        firefox:
+          adml: ef2bc126558ba9b9e2f9a4d2d7d491b6a4b4e9acab6070609559858566c01343
+          admx: c60616b04e6e863bf814cf7f02d476f920dba0c6dbcbe9963eb79cd8a90ce836
+        mozilla:
+          adml: cd802549112e61044ba648d05db8b0edc446a3458d18333748b83c0fa49c9894
+          admx: 63872a03337f0268085c43c45f1ef05cd2ce68e36bb54c63f0cd128985c76bb0
+    policy_revision: '1.12'
