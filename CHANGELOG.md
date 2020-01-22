@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.2.0](https://github.com/dafyddj/firefox-formula/compare/v1.1.0...v1.2.0) (2020-01-22)
+
+
+### Features
+
+* **gpo:** install/clean Firefox administrative templates ([0b546e2](https://github.com/dafyddj/firefox-formula/commit/0b546e24bdcd95c2899b8a28e84890df585aae82))
+
 # [1.1.0](https://github.com/dafyddj/firefox-formula/compare/v1.0.0...v1.1.0) (2020-01-12)
 
 
