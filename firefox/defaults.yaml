@@ -4,6 +4,8 @@
 firefox:
   pkg:
     name: firefox_x64
+    version: latest
+    extra_install_flags: null
   gpo:
     file_owner: Administrators
     lang: en-US

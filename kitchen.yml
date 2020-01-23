@@ -193,6 +193,6 @@ suites:
       inspec_tests:
         - path: test/integration/default
       controls:
-        - firefox package
+        - firefox-package-install
         - firefox-gpo-install
         - firefox-gpo-config
