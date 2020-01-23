@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`1.3.0 <https://github.com/dafyddj/firefox-formula/compare/v1.2.0...v1.3.0>`_ (2020-01-23)
+----------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **gpo:** configure Firefox using Local Group Policy Objects (\ `8f7963a <https://github.com/dafyddj/firefox-formula/commit/8f7963a0822f7b3361d2532dfba9bdbc4623e61c>`_\ )
+
 `1.2.0 <https://github.com/dafyddj/firefox-formula/compare/v1.1.0...v1.2.0>`_ (2020-01-22)
 ----------------------------------------------------------------------------------------------
 
