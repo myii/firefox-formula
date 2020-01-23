@@ -7,6 +7,7 @@ firefox:
   gpo:
     file_owner: Administrators
     lang: en-US
+    policies: null
     policy_dir: C:\Windows\PolicyDefinitions
     policy_hash:
       '1.12':

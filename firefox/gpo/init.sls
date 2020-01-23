@@ -3,4 +3,4 @@
 
 include:
   - .install
-#  - .config
+  - .config

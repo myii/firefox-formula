@@ -4,6 +4,9 @@
 firefox:
   lookup:
     gpo:
+      policies:
+        Disable Private Browsing: Enabled
+        Disable Update: Enabled
       policy_revision: '1.11'
 
 #  # Using bash package and udev service as an example. This allows us to

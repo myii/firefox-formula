@@ -3,7 +3,4 @@
 
 include:
   - .package
-  - .gpo
-#  - .config
-#  - .service
-#  - .subcomponent
+  - .config
