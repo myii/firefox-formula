@@ -10,3 +10,4 @@ firefox:
       policy_revision: '1.11'
     pkg:
       version: 68.0
+      extra_install_flags: /DesktopShortcut=false /TaskbarShortcut=false
