@@ -2,6 +2,22 @@
 Changelog
 =========
 
+`1.4.0 <https://github.com/dafyddj/firefox-formula/compare/v1.3.0...v1.4.0>`_ (2020-01-23)
+----------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **modules:** add patched win_pkg.py with fix for ``extra_install_flags`` (\ `ffad51e <https://github.com/dafyddj/firefox-formula/commit/ffad51e3282291da8f7d6ae0e8fa0f429274879b>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **package:** allow configuration of ``extra_install_flags`` (\ `67ee249 <https://github.com/dafyddj/firefox-formula/commit/67ee249112c8ffcca7df8c241153103ef895e91b>`_\ )
+* **package:** install specific version of Firefox (default: latest) (\ `30c7afd <https://github.com/dafyddj/firefox-formula/commit/30c7afdd3e761a8aed5133f727db135190bdf27c>`_\ )
+
 `1.3.0 <https://github.com/dafyddj/firefox-formula/compare/v1.2.0...v1.3.0>`_ (2020-01-23)
 ----------------------------------------------------------------------------------------------
 
