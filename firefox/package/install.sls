@@ -8,3 +8,4 @@
 firefox-package-install-pkg-installed:
   pkg.installed:
     - name: {{ firefox.pkg.name }}
+    - version: {{ firefox.pkg.version }}
