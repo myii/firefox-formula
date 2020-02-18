@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-package_name = 'Mozilla Firefox'
+package_name = 'Mozilla Firefox 68.0 ESR (x86 en-GB)'
 desktop_shortcut = 'C:\\Users\\Public\\Desktop\\Firefox.lnk'
 
 control 'firefox-package-install' do
