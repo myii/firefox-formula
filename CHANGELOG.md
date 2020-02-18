@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.1](https://github.com/dafyddj/firefox-formula/compare/v1.4.0...v1.4.1) (2020-02-18)
+
+
+### Reverts
+
+* patched issue fixed in v3000 ([939748b](https://github.com/dafyddj/firefox-formula/commit/939748b0eea54208b299badc725f37d26b822aeb))
+
+
+### Tests
+
+* **pkg:** test for install of ESR x86 with lang en-GB ([33f0f39](https://github.com/dafyddj/firefox-formula/commit/33f0f39b90e87fa07e0f4ef2b2814ac716472fa9))
+
 # [1.4.0](https://github.com/dafyddj/firefox-formula/compare/v1.3.0...v1.4.0) (2020-01-23)
 
 
