@@ -2,6 +2,8 @@
 # vim: ft=yaml
 ---
 firefox:
+  pkg:
+    lang: en-GB
   lookup:
     gpo:
       policies:
@@ -9,5 +11,6 @@ firefox:
         Disable Update: Enabled
       policy_revision: '1.11'
     pkg:
+      name: firefox-esr_x86
       version: 68.0
       extra_install_flags: /DesktopShortcut=false /TaskbarShortcut=false

@@ -5,7 +5,7 @@ driver:
   name: vagrant
 
 platforms:
-  - name: windows-81-2019-2-py3
+  - name: windows-81-3000-py3
     driver:
       box: techneg/win81x64-pro-salt
       gui: false
@@ -13,6 +13,6 @@ platforms:
     provisioner:
       init_environment: >
         salt-call --local state.single file.managed
-        C:\Users\vagrant\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox_x64.sls
-        source=https://github.com/saltstack/salt-winrepo-ng/raw/master/firefox_x64.sls
+        C:\Users\vagrant\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox-esr_x86.sls
+        source=https://github.com/dafyddj/salt-winrepo-ng/raw/master/firefox-esr_x86.sls
         skip_verify=True makedirs=True
