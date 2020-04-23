@@ -11,7 +11,7 @@ env:
   machine_pass: Pass@word1
   machine_port: 5985
   KITCHEN_LOCAL_YAML: .kitchen.github.yml
-  SSL_CERT_FILE: c:\projects\kitchen-machine\certs.pem
+  SSL_CERT_FILE: c:\Temp\certs.pem
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -29,9 +29,9 @@ jobs:
     - run: net user /add $env:machine_user $env:machine_pass
     - run: net localgroup administrators $env:machine_user /add
     - run: gem install bundler --quiet --no-ri --no-rdoc
-    - run: Get-PSDrive
-    - run: 'ls c:; ls c:\Temp; ls d:'
-#    - run: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\kitchen-machine\certs.pem
+    - run: pwd; Get-PSDrive
+    - run: 'ls c:\; ls d:\'
+    - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
