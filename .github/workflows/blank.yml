@@ -34,7 +34,7 @@ jobs:
     - run: Test-WSMan
     - run: winrm get winrm/config
     - run: netstat -anp TCP
-    - run: Invoke-Command localhost {1}
+    - run: Invoke-Command -UseSSL localhost {1}
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
