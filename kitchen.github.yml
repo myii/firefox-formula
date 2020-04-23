@@ -9,3 +9,6 @@ driver:
 
 platforms:
   - name: windows
+  
+provisioner:
+  salt_install: false
