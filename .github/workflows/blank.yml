@@ -29,7 +29,8 @@ jobs:
     - run: net user /add $env:machine_user $env:machine_pass
     - run: net localgroup administrators $env:machine_user /add
     - run: gem install bundler --quiet --no-ri --no-rdoc
-    - run: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\kitchen-machine\certs.pem
+    - run: Get-PSDrive
+#    - run: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\kitchen-machine\certs.pem
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
