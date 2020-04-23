@@ -28,11 +28,13 @@ jobs:
     - run: whoami; net user runneradmin
     - run: net user /add $env:machine_user $env:machine_pass
     - run: net localgroup administrators $env:machine_user /add
-    - run: gem install bundler --quiet --no-ri --no-rdoc
-    - run: pwd; Get-PSDrive
+    - run: pwd
+    - run: Get-PSDrive
     - run: 'ls c:\; ls d:\'
-    - run: 'cat d:\cmds.txt; cat d:\DATALOSS_WARNING_README.txt' 
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
+    - run: gem install bundler --quiet --no-ri --no-rdoc
+    - run: bundle install --jobs 4 --retry 3
+    - run: bin/kitchen version
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
