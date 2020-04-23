@@ -1,6 +1,6 @@
 ---
 driver:
-  name: proxy
+  name: exec
   host: localhost
   reset_command: "exit 0"
   port: <%= ENV["machine_port"] %>
