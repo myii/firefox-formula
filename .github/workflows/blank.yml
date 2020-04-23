@@ -36,12 +36,12 @@ jobs:
         Test-WSMan -Authentication default
     - run: winrm get winrm/config
     - run: netstat -anp TCP
-    - run: |
-        $ErrorView = 'NormalView'
-        $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
-        Invoke-Command -SessionOption $so -UseSSL localhost {1}
+#    - run: |
+#        $ErrorView = 'NormalView'
+#        $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+#        Invoke-Command -SessionOption $so -UseSSL localhost {1}
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
     - run: bundle exec kitchen version
-    - run: bundle exec kitchen verify
+    - run: bundle exec kitchen verify -l debug
