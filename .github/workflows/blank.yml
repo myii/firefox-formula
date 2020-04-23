@@ -35,8 +35,4 @@ jobs:
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
     - run: bundle exec kitchen version
-    - run: bundle exec kitchen list
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - run: bundle exec kitchen verify
