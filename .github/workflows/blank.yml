@@ -30,7 +30,7 @@ jobs:
     - run: net localgroup administrators $env:machine_user /add
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: Get-PSDrive
-    - run: ls c:; ls d:
+    - run: 'ls c:; ls d:'
 #    - run: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\kitchen-machine\certs.pem
 
     # Runs a single command using the runners shell
