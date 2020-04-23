@@ -31,7 +31,9 @@ jobs:
     - run: pwd
     - run: Get-PSDrive
     - run: 'ls c:\; ls d:\'
-    - run: Test-WSMan -Authentication default -UseSSL
+    - run: |
+        $ErrorView = 'NormalView'
+        Test-WSMan -Authentication default -UseSSL
     - run: winrm get winrm/config
     - run: netstat -anp TCP
     - run: |
