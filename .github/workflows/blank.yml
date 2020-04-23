@@ -33,7 +33,7 @@ jobs:
     - run: 'ls c:\; ls d:\'
     - run: |
         $ErrorView = 'NormalView'
-        Test-WSMan -Authentication default -UseSSL
+        Test-WSMan -Authentication default
     - run: winrm get winrm/config
     - run: netstat -anp TCP
     - run: |
