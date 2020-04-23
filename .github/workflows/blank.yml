@@ -31,6 +31,7 @@ jobs:
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: pwd; Get-PSDrive
     - run: 'ls c:\; ls d:\'
+    - run: 'cat d:\cmds.txt; cat d:\DATALOSS_WARNING_README.txt' 
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
 
     # Runs a single command using the runners shell
