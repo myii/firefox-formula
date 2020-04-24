@@ -25,21 +25,21 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - run: whoami; net user runneradmin
+    - run: net user; whoami; net user runneradmin
     - run: net user /add $env:machine_user $env:machine_pass
     - run: net localgroup administrators $env:machine_user /add
     - run: pwd
     - run: Get-PSDrive
     - run: 'ls c:\; ls d:\'
-    - run: |
-        $ErrorView = 'NormalView'
-        Test-WSMan -Authentication default
-    - run: winrm get winrm/config
-    - run: netstat -anp TCP
 #    - run: |
 #        $ErrorView = 'NormalView'
-#        $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
-#        Invoke-Command -SessionOption $so -UseSSL localhost {1}
+#        Test-WSMan -Authentication default
+    - run: winrm get winrm/config
+    - run: netstat -anp TCP
+    - run: |
+        $ErrorView = 'NormalView'
+        $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+        Invoke-Command -SessionOption $so -UseSSL localhost {1}
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
