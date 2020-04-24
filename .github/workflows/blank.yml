@@ -40,8 +40,10 @@ jobs:
     - run: netstat -anp TCP
     - shell: powershell
       run: |
+        $mycreds = New-Object System.Management.Automation.PSCredential `
+              ("installer", (new-object System.Security.SecureString))
         $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
-        Connect-WSMan -ComputerName "localhost" -SessionOption $so -UseSSL
+        Connect-WSMan -ComputerName "localhost" -SessionOption $so -UseSSL -Credential $mycreds
         cd wsman:
         dir
     - run: Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
