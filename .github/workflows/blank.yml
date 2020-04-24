@@ -38,6 +38,12 @@ jobs:
       shell: cmd
     - run: winrm get winrm/config
     - run: netstat -anp TCP
+    - shell: powershell
+      run: |
+        $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
+        Connect-WSMan -ComputerName "localhost" -SessionOption $so
+        cd wsman:
+        dir
     - run: Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
       shell: powershell
     - run: |
