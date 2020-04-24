@@ -44,10 +44,11 @@ jobs:
       shell: cmd
     - run: Test-WSMan -Authentication default
       shell: powershell
-    - run: |
-       winrm set winrm/config/service @{AllowUnencrypted="true"}
-       winrm set winrm/config/client @{AllowUnencrypted="true"}
-       winrm get winrm/config
+    - run: winrm set winrm/config/service @{AllowUnencrypted="true"}
+      shell: cmd
+    - run: winrm set winrm/config/client @{AllowUnencrypted="true"}
+      shell: cmd
+    - run: winrm get winrm/config
       shell: cmd 
     - run: |
         $ErrorView = 'NormalView'
