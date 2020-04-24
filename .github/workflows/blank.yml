@@ -30,5 +30,7 @@ jobs:
     - run: |
         choco install openssh --params '"/SSHServerFeature /KeyBasedAuthenticationFeature"' --confirm --no-progress
       shell: powershell
+    - run: echo $PATH
+      shell: powershell
     - run: ssh -V
       shell: cmd
