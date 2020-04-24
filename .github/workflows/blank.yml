@@ -38,6 +38,7 @@ jobs:
     - run: netstat -anp TCP
     - run: |
         $ErrorView = 'NormalView'
+        ls WSMan:\localhost\Client
         Set-Item WSMan:\localhost\Client\TrustedHosts -Value *
         $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($env:machine_user, $password)
