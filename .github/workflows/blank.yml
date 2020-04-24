@@ -40,8 +40,9 @@ jobs:
     - run: netstat -anp TCP
     - shell: powershell
       run: |
+        $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential `
-              ("installer", (new-object System.Security.SecureString))
+              ("installer", $password)
         $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
         Connect-WSMan -ComputerName "localhost" -SessionOption $so -UseSSL -Credential $mycreds
         cd wsman:
