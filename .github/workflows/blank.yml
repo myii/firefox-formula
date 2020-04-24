@@ -44,7 +44,10 @@ jobs:
         netsh advfirewall firewall set rule group="Windows Remote Management" new enable=yes
         netsh advfirewall firewall add rule name="winrm"  dir=in action=allow protocol=TCP localport=5985
       shell: cmd
-    - run: winrm get winrm/config
+    - run: |
+        $ErrorView = 'NormalView'
+        Restart-Service winrm
+        winrm get winrm/config
     - run: netstat -anp TCP
     - shell: powershell
       run: |
@@ -64,7 +67,7 @@ jobs:
         $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($env:machine_user, $password)
         $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
-        Invoke-Command -SessionOption $so -UseSSL -Credential $psCred -Authentication Basic localhost {1}
+        Invoke-Command -SessionOption $so -Credential $psCred -Authentication Basic localhost {1}
       shell: powershell
     - if: failure()
       shell: powershell
