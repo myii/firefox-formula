@@ -35,7 +35,7 @@ jobs:
 #        $ErrorView = 'NormalView'
 #        Test-WSMan -Authentication default
     - run: |
-        winrm quickconfig -transport:http
+        winrm quickconfig -force
         winrm set winrm/config/service @{AllowUnencrypted="true"}
         winrm set winrm/config/service/auth @{Basic="true"}
         winrm set winrm/config/client/auth @{Basic="true"}
