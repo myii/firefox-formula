@@ -49,16 +49,16 @@ jobs:
         Restart-Service winrm
         winrm get winrm/config
     - run: netstat -anp TCP
-    - shell: powershell
-      run: |
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
-        $mycreds = New-Object System.Management.Automation.PSCredential `
-              ("installer", $password)
-        $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
-        Connect-WSMan -ComputerName "localhost" -SessionOption $so -Credential $mycreds
-        cd wsman:
-        dir
+#    - shell: powershell
+#      run: |
+#        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+#        $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
+#        $mycreds = New-Object System.Management.Automation.PSCredential `
+#              ("installer", $password)
+#        $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
+#        Connect-WSMan -ComputerName "localhost" -SessionOption $so -Credential $mycreds
+#        cd wsman:
+#        dir
     - run: Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
       shell: powershell
     - run: |
@@ -67,7 +67,7 @@ jobs:
         $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($env:machine_user, $password)
         $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
-        Invoke-Command -SessionOption $so -Credential $psCred -Authentication Basic localhost {1}
+        Invoke-Command -Credential $psCred -Authentication Basic localhost {1}
       shell: powershell
     - if: failure()
       shell: powershell
