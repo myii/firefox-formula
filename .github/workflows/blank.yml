@@ -42,8 +42,13 @@ jobs:
         winrm get winrm/config
         netstat -anp TCP
       shell: cmd
-    - run: Test-WSMan
+    - run: Test-WSMan -Authentication default
       shell: powershell
+    - run: |
+       winrm set winrm/config/service @{AllowUnencrypted="true"}
+       winrm set winrm/config/client @{AllowUnencrypted="true"}
+       winrm get winrm/config
+      shell: cmd 
     - run: |
         $ErrorView = 'NormalView'
         ls WSMan:\localhost\Client
