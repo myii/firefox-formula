@@ -61,7 +61,8 @@ jobs:
     - if: failure()
       shell: powershell
       run: |
-        Get-EventLog System -Newest 10 -ErrorAction SilentlyContinue -EntryType Error,Warning
+        Get-EventLog System -Newest 10 -ErrorAction SilentlyContinue -EntryType Error,Warning `
+        | Select-Object TimeGenerated,Message,Source | Format-List *
     - if: failure()
       shell: powershell
       run: |
