@@ -38,6 +38,8 @@ jobs:
       shell: cmd
     - run: winrm get winrm/config
     - run: netstat -anp TCP
+    - run: Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue
+      shell: powershell
     - run: |
         $ErrorView = 'NormalView'
         Install-Module -Name WindowsCompatibility -Scope CurrentUser -Force
