@@ -40,6 +40,7 @@ jobs:
     - run: netstat -anp TCP
     - shell: powershell
       run: |
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential `
               ("installer", $password)
@@ -60,8 +61,11 @@ jobs:
     - if: failure()
       shell: powershell
       run: |
-        Get-EventLog System -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
-        Get-EventLog Application -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
+        Get-EventLog System -Newest 10 -ErrorAction SilentlyContinue -EntryType Error,Warning
+    - if: failure()
+      shell: powershell
+      run: |
+        Get-EventLog Application -Newest 10 -ErrorAction SilentlyContinue -EntryType Error,Warning
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
