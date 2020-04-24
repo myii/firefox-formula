@@ -38,13 +38,16 @@ jobs:
       shell: cmd
     - run: winrm get winrm/config
     - run: netstat -anp TCP
+    - run: Get-EventLog system -Newest 10 -EntryType Error
     - run: |
         $ErrorView = 'NormalView'
         ls WSMan:\localhost\Client
         $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($env:machine_user, $password)
         $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
-        Invoke-Command -SessionOption $so -UseSSL -Credential $psCred -Authentication Basic localhost {1} || Get-EventLog system -Newest 10 -EntryType Error
+        Invoke-Command -SessionOption $so -UseSSL -Credential $psCred -Authentication Basic localhost {1}
+    - if: failure()
+      run: Get-EventLog system -Newest 10 -EntryType Error
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
