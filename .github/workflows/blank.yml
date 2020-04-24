@@ -25,44 +25,5 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - run: net user; whoami; net user runneradmin
-    - run: net user /add $env:machine_user $env:machine_pass
-    - run: net localgroup administrators $env:machine_user /add
-    - run: pwd
-    - run: Get-PSDrive
-    - run: 'ls c:\; ls d:\'
-#    - run: |
-#        $ErrorView = 'NormalView'
-#        Test-WSMan -Authentication default
-    - run: |
-        Get-NetConnectionProfile
-        Enable-PSRemoting -Force
+    - run: Get-WindowsCapability -Online | ? Name -like 'OpenSSH*'
       shell: powershell
-    - run: |
-        winrm get winrm/config
-        netstat -anp TCP
-      shell: cmd
-    - run: Test-WSMan -Authentication default
-      shell: powershell
-    - run: winrm set winrm/config/service @{AllowUnencrypted="true"}
-      shell: cmd
-    - run: winrm set winrm/config/client @{AllowUnencrypted="true"}
-      shell: cmd
-    - run: winrm get winrm/config
-      shell: cmd 
-    - run: |
-        $password = ConvertTo-SecureString "$env:machine_pass" -AsPlainText -Force
-        $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($env:machine_user, $password)
-        echo $psCred
-        Invoke-Command -Credential $psCred -Authentication Basic -ComputerName localhost -ScriptBlock {1}
-      shell: powershell
-    - if: failure()
-      shell: powershell
-      run: |
-        Get-EventLog System -Newest 10 -ErrorAction SilentlyContinue -EntryType Error,Warning `
-        | Select-Object TimeGenerated,Message,Source | Format-List *
-    - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
-    - run: gem install bundler --quiet --no-ri --no-rdoc
-    - run: bundle install --jobs 4 --retry 3
-    - run: bundle exec kitchen version
-    - run: bundle exec kitchen verify -l debug
