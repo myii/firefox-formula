@@ -40,7 +40,7 @@ jobs:
     - run: netstat -anp TCP
     - run: |
         $ErrorView = 'NormalView'
-        Install-Module -Name WindowsCompatibility -Scope CurrentUser
+        Install-Module -Name WindowsCompatibility -Scope CurrentUser -Force
         Import-WinModule Microsoft.PowerShell.Management
         Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue
     - run: |
