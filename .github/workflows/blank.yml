@@ -41,7 +41,7 @@ jobs:
     - shell: powershell
       run: |
         $so = New-WSManSessionOption -SkipCACheck -SkipCNCheck
-        Connect-WSMan -ComputerName "localhost" -SessionOption $so
+        Connect-WSMan -ComputerName "localhost" -SessionOption $so -UseSSL
         cd wsman:
         dir
     - run: Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue -EntryType Error
