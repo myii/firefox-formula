@@ -28,5 +28,7 @@ jobs:
     - run: ver
       shell: cmd
     - run: |
-        choco install win32-openssh -params '"/SSHServerFeature /KeyBasedAuthenticationFeature"' -confirm
+        choco install openssh --params '"/SSHServerFeature /KeyBasedAuthenticationFeature"' --confirm --no-progress
       shell: powershell
+    - run: ssh -V
+      shell: cmd
