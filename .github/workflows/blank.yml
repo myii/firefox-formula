@@ -25,6 +25,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - run: ver
+      shell: cmd
     - run: |
         Get-WindowsCapability -Online | ? Name -like 'OpenSSH*'
         Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
