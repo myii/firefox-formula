@@ -40,6 +40,8 @@ jobs:
     - run: netstat -anp TCP
     - run: |
         $ErrorView = 'NormalView'
+        Install-Module -Name WindowsCompatibility -Scope CurrentUser
+        Import-WinModule Microsoft.PowerShell.Management
         Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue
     - run: |
         $ErrorView = 'NormalView'
@@ -51,6 +53,7 @@ jobs:
     - if: failure()
       run: |
         $ErrorView = 'NormalView'
+        
         Get-EventLog system -Newest 10 -ErrorAction SilentlyContinue
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
