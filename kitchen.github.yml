@@ -5,6 +5,8 @@ driver:
   reset_command: "exit 0"
   username: <%= ENV["machine_user"] %>
   password: <%= ENV["machine_pass"] %>
+  
+transport:
   winrm_transport: ssl
 
 platforms:
