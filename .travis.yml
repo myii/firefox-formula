@@ -3,6 +3,7 @@
 ---
 ## Machine config
 os: windows
+language: shell
 
 ## Script to run for the test stage
 script:
