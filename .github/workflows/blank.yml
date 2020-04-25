@@ -25,6 +25,12 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - run: net user; whoami; net user runneradmin
     - run: net user /add $env:machine_user $env:machine_pass
     - run: net localgroup administrators $env:machine_user /add
@@ -37,6 +43,9 @@ jobs:
       shell: cmd
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc
-    - run: bundle install --jobs 4 --retry 3
+    - name: Bundle install
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
     - run: bundle exec kitchen version
     - run: bundle exec kitchen test -l debug
