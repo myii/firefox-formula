@@ -14,7 +14,7 @@ script:
   - netstat -anp TCP
   - winrm.cmd get winrm/config
   - |
-    powershell -Command '. {echo "line 1"
-    echo "line 2" }'
-  - powershell -Command '. {Invoke-Command -ComputerName "localhost" -ScriptBlock {$env:COMPUTERNAME} }'
-
+    powershell -Command '. {$password = ConvertTo-SecureString "Pass@word1" -AsPlainText -Force
+    $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ("test_user", $password)
+    Invoke-Command -Credential $psCred -ComputerName "localhost" -ScriptBlock {1}
+    }'
