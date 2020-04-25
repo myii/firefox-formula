@@ -7,9 +7,9 @@ name: CI
 on: [push, pull_request]
 
 env:
-  machine_user: installer
-  machine_pass: ''
-  machine_port: 5986
+  machine_user: test_user
+  machine_pass: Pass@word1
+  machine_port: 5985
   KITCHEN_LOCAL_YAML: kitchen.github.yml
   SSL_CERT_FILE: c:\Temp\certs.pem
   
@@ -32,16 +32,18 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
     - run: net user; whoami; net user runneradmin
-#    - run: net user /add $env:machine_user $env:machine_pass
-#    - run: net localgroup administrators $env:machine_user /add
+    - run: net user /add $env:machine_user $env:machine_pass
+    - run: net localgroup administrators $env:machine_user /add
+    - run: net user $env:machine_user
     - run: pwd
     - run: Get-PSDrive
     - run: 'ls c:\; ls d:\'
+    - run: Enable-PSRemoting -Force
+      shell: powershell
+    - run: winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+      shell: cmd
+    - run: - winrm.cmd set winrm/config/client '@{AllowUnencrypted="true"}'
     - run: winrm get winrm/config
-      shell: cmd
-    - run: netstat -anp TCP
-      shell: cmd
-    - run: netsh advfirewall firewall add rule name="Windows Remote Management [TCP 5986] (HTTPS-In)" dir=in protocol=tcp localport=5986 profile=any enable=yes action=allow
       shell: cmd
     - run: |
         Get-NetFirewallRule |  Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' } |
@@ -53,12 +55,6 @@ jobs:
         Profile,
         Direction,
         Action
-      shell: powershell
-    - run: Get-NetFirewallRule | Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' }
-      shell: powershell
-    - run: Get-NetFirewallRule | Where { $_.Name -like '*WINRM*' }
-      shell: powershell
-    - run: Get-NetFirewallRule | Where { $_.Description -like '*5986*' }
       shell: powershell
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc --version 1.17.2
