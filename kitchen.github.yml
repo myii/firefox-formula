@@ -21,4 +21,4 @@ provisioner:
     C:\Users\<%= ENV["machine_user"] %>\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox-esr_x86.sls
     source=https://github.com/saltstack/salt-winrepo-ng/raw/master/firefox-esr_x86.sls
     skip_verify=True makedirs=True;
-    Start-Process -"$env:ProgramFiles\Mozilla Firefox\uninstall\helper.exe" -ArgumentList /S -Wait
+    Start-Process "$env:ProgramFiles\Mozilla Firefox\uninstall\helper.exe" -ArgumentList /S -Wait
