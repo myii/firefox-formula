@@ -42,7 +42,7 @@ jobs:
         netstat -anp TCP
       shell: cmd
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
-    - run: gem install bundler --quiet --no-ri --no-rdoc
+    - run: gem install bundler --quiet --no-ri --no-rdoc --version 1.17.2
     - name: Bundle install
       run: |
         bundle config path vendor/bundle
