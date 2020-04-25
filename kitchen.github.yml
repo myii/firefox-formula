@@ -7,8 +7,8 @@ driver:
   username: <%= ENV["machine_user"] %>
   password: <%= ENV["machine_pass"] %>
   
-transport:
-  winrm_transport: ssl
+#transport:
+#  winrm_transport: ssl
 
 platforms:
   - name: windows
