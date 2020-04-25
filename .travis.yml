@@ -13,7 +13,7 @@ script:
   - net user test_user
   - netstat -anp TCP
 #  - winrm.cmd set winrm/config/client '@{TrustedHosts="*"}'
-  - winrm.cmd set winrm/config/service @{AllowUnencrypted="true"}
+  - winrm.cmd set winrm/config/service '@{AllowUnencrypted="true"}'
   - winrm.cmd get winrm/config
   - |
     powershell -Command '. {
