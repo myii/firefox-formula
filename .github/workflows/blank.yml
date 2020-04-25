@@ -7,8 +7,8 @@ name: CI
 on: [push, pull_request]
 
 env:
-  machine_user: test_user
-  machine_pass: Pass@word1
+  machine_user: installer
+  machine_pass: null
   machine_port: 5986
   KITCHEN_LOCAL_YAML: kitchen.github.yml
   SSL_CERT_FILE: c:\Temp\certs.pem
@@ -32,8 +32,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
     - run: net user; whoami; net user runneradmin
-    - run: net user /add $env:machine_user $env:machine_pass
-    - run: net localgroup administrators $env:machine_user /add
+#    - run: net user /add $env:machine_user $env:machine_pass
+#    - run: net localgroup administrators $env:machine_user /add
     - run: pwd
     - run: Get-PSDrive
     - run: 'ls c:\; ls d:\'
