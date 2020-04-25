@@ -41,7 +41,7 @@ jobs:
         winrm get winrm/config
         netstat -anp TCP
       shell: cmd
-    - run: Get-NetFirewallRule | Where { $_.Enabled –eq 'True' –and $_.Direction –eq 'Inbound' }
+    - run: Get-NetFirewallRule | Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' }
       shell: powershell
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc --version 1.17.2
