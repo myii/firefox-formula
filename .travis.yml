@@ -7,8 +7,9 @@ language: shell
 
 ## Script to run for the test stage
 script:
-  - powershell -Command ". {echo $env:PATH}"
+  - powershell -Command '. {echo $env:PATH}'
+  - net user; whoami
   - netstat -anp TCP
-  - powershell -Command ". {winrm get winrm/config}"
-  - powershell -Command ". {Invoke-Command -ComputerName 'localhost' -ScriptBlock {$env:COMPUTERNAME} }"
+  - winrm.cmd get winrm/config
+  - powershell -Command '. {Invoke-Command -ComputerName "localhost" -ScriptBlock {$env:COMPUTERNAME} }'
 
