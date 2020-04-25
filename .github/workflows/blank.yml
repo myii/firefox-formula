@@ -43,6 +43,17 @@ jobs:
       shell: cmd
     - run: netsh advfirewall firewall add rule name="Windows Remote Management [TCP 5986] (HTTPS-In)" dir=in protocol=tcp localport=5986 profile=any enable=yes action=allow
       shell: cmd
+    - run: |
+        Get-NetFirewallRule |  Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' } |
+        Format-Table -Property DisplayName, @{Name='Protocol';Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},
+        @{Name='LocalPort';Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},
+        @{Name='RemotePort';Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},
+        @{Name='RemoteAddress';Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}},
+        Enabled,
+        Profile,
+        Direction,
+        Action
+      shell: powershell
     - run: Get-NetFirewallRule | Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' }
       shell: powershell
     - run: Get-NetFirewallRule | Where { $_.Name -like '*WINRM*' }
