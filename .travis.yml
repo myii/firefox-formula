@@ -3,11 +3,11 @@
 ---
 ## Machine config
 os: windows
-language: shell
+language: c
 
 ## Script to run for the test stage
 script:
   - winrm get winrm/config
   - netstat -anp TCP
-  - powershell -Command . {Invoke-Command -ComputerName 'localhost' -ScriptBlock {$env:COMPUTERNAME} -ErrorVariable httpError -ErrorAction SilentlyContinue }"
+  - powershell -Command ". {Invoke-Command -ComputerName 'localhost' -ScriptBlock {$env:COMPUTERNAME} }"
 
