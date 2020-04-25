@@ -43,6 +43,8 @@ jobs:
       shell: cmd
     - run: Get-NetFirewallRule | Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' }
       shell: powershell
+    - run: Get-NetFirewallRule | Where { $_.Name -like '*WINRM*' }
+      shell: powershell
     - run: Invoke-WebRequest -Uri https://curl.haxx.se/ca/cacert.pem -OutFile $env:SSL_CERT_FILE
     - run: gem install bundler --quiet --no-ri --no-rdoc --version 1.17.2
     - name: Bundle install
