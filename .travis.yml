@@ -15,7 +15,9 @@ script:
   - winrm.cmd set winrm/config/client '@{TrustedHosts="*"}'
   - winrm.cmd get winrm/config
   - |
-    powershell -Command '. {$password = ConvertTo-SecureString "Pass@word1" -AsPlainText -Force
+    powershell -Command '. {
+    $password = ConvertTo-SecureString "Pass@word1" -AsPlainText -Force
     $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ("test_user", $password)
-    Invoke-Command -Credential $psCred -Authentication Basic -ComputerName "localhost" -ScriptBlock {1}
+    $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+    Invoke-Command -ComputerName localhost -UseSSL -ScriptBlock { 1 } -SessionOption $so -Credential $psCred
     }'
