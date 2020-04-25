@@ -1,6 +1,6 @@
 ---
 driver:
-  name: exec
+  name: proxy
   host: localhost
   reset_command: "exit 0"
   port: <%= ENV["machine_port"] %>
@@ -11,4 +11,9 @@ platforms:
   - name: windows
   
 provisioner:
-  salt_install: false
+  salt_install: bootstrap
+  init_environment: >
+    salt-call --local state.single file.managed
+    C:\Users\vagrant\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox-esr_x86.sls
+    source=https://github.com/dafyddj/salt-winrepo-ng/raw/master/firefox-esr_x86.sls
+    skip_verify=True makedirs=True
