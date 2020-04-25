@@ -16,5 +16,5 @@ script:
   - |
     powershell -Command '. {$password = ConvertTo-SecureString "Pass@word1" -AsPlainText -Force
     $psCred = New-Object System.Management.Automation.PSCredential -ArgumentList ("test_user", $password)
-    Invoke-Command -Credential $psCred -Authentication Basic -ScriptBlock {1}
+    Invoke-Command -Credential $psCred -Authentication Basic -ComputerName "localhost" -ScriptBlock {1}
     }'
