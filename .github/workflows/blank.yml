@@ -42,7 +42,8 @@ jobs:
       shell: powershell
     - run: winrm set winrm/config/service '@{AllowUnencrypted="true"}'
       shell: cmd
-    - run: - winrm.cmd set winrm/config/client '@{AllowUnencrypted="true"}'
+    - run: winrm set winrm/config/client '@{AllowUnencrypted="true"}'
+      shell: cmd
     - run: winrm get winrm/config
       shell: cmd
     - run: |
