@@ -9,6 +9,8 @@ language: shell
 script:
   - powershell -Command '. {echo $env:PATH}'
   - net user; net user travis
+  - powershell -command "net user /add test_user Pass@word1; net localgroup administrators test_user /add"
+  - net user test_user
   - netstat -anp TCP
   - winrm.cmd get winrm/config
   - |
