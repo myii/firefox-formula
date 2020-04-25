@@ -25,4 +25,4 @@ provisioner:
     C:\Users\<%= ENV["machine_user"] %>\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox_x64.sls
     source=https://github.com/saltstack/salt-winrepo-ng/raw/master/firefox_x64.sls
     skip_verify=True makedirs=True;
-    C:\salt\salt-call --local -c $env:TEMP\kitchen\etc\salt pkg.remove firefox_x64
+    C:\salt\salt-call --local -c $env:TEMP\kitchen\etc\salt -l debug pkg.remove firefox_x64
