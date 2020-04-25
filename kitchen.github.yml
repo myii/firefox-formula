@@ -21,4 +21,8 @@ provisioner:
     C:\Users\<%= ENV["machine_user"] %>\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox-esr_x86.sls
     source=https://github.com/saltstack/salt-winrepo-ng/raw/master/firefox-esr_x86.sls
     skip_verify=True makedirs=True;
-    C:\salt\salt-call --local pkg.list_pkgs
+    C:\salt\salt-call --local state.single file.managed
+    C:\Users\<%= ENV["machine_user"] %>\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox_x64.sls
+    source=https://github.com/saltstack/salt-winrepo-ng/raw/master/firefox_x64.sls
+    skip_verify=True makedirs=True;
+    C:\salt\salt-call --local pkg.remove firefox_x64
