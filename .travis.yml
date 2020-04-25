@@ -9,4 +9,5 @@ language: shell
 script:
   - winrm get winrm/config
   - netstat -anp TCP
+  - powershell -Command . {Invoke-Command -ComputerName 'localhost' -ScriptBlock {$env:COMPUTERNAME} -ErrorVariable httpError -ErrorAction SilentlyContinue }"
 
