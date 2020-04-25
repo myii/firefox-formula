@@ -46,6 +46,7 @@ jobs:
       shell: cmd
     - run: winrm get winrm/config
       shell: cmd
+    - run: netstat -anp TCP
     - run: |
         Get-NetFirewallRule |  Where { $_.Enabled -eq 'True' -and $_.Direction -eq 'Inbound' } |
         Format-Table -Property DisplayName, @{Name='Protocol';Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},
