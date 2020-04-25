@@ -39,4 +39,4 @@ jobs:
     - run: gem install bundler --quiet --no-ri --no-rdoc
     - run: bundle install --jobs 4 --retry 3
     - run: bundle exec kitchen version
-    - run: bundle exec kitchen test
+    - run: bundle exec kitchen test -l debug
