@@ -16,7 +16,7 @@ platforms:
 provisioner:
   salt_install: bootstrap
   init_environment: >
-    salt-call --local state.single file.managed
+    C:\salt\salt-call --local state.single file.managed
     C:\Users\vagrant\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\firefox-esr_x86.sls
     source=https://github.com/dafyddj/salt-winrepo-ng/raw/master/firefox-esr_x86.sls
     skip_verify=True makedirs=True
